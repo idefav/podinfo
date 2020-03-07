@@ -6,7 +6,7 @@ WORKDIR /podinfo
 
 COPY . .
 
-RUN go mod download
+RUN export GOPROXY=https://goproxy.io && go mod download
 
 RUN go test -v -race ./...
 
