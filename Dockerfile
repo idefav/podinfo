@@ -1,4 +1,4 @@
-FROM golang:1.13 as builder
+FROM 192.168.0.231/library/golang:1.13 as builder
 
 RUN mkdir -p /podinfo/
 
@@ -20,7 +20,7 @@ RUN GIT_COMMIT=$(git rev-list -1 HEAD) && \
     -X github.com/stefanprodan/podinfo/pkg/version.REVISION=${GIT_COMMIT}" \
     -a -o bin/podcli cmd/podcli/*
 
-FROM alpine:3.10
+FROM 192.168.0.231/library/alpine:3.10
 
 RUN addgroup -S app \
     && adduser -S -g app app \
