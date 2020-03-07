@@ -12,12 +12,12 @@ RUN go test -v -race ./...
 
 RUN GIT_COMMIT=$(git rev-list -1 HEAD) && \
     CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w \
-    -X github.com/stefanprodan/podinfo/pkg/version.REVISION=${GIT_COMMIT}" \
+    -X github.com/idefav/podinfo/pkg/version.REVISION=${GIT_COMMIT}" \
     -a -o bin/podinfo cmd/podinfo/*
 
 RUN GIT_COMMIT=$(git rev-list -1 HEAD) && \
     CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w \
-    -X github.com/stefanprodan/podinfo/pkg/version.REVISION=${GIT_COMMIT}" \
+    -X github.com/idefav/podinfo/pkg/version.REVISION=${GIT_COMMIT}" \
     -a -o bin/podcli cmd/podcli/*
 
 FROM 192.168.0.231/library/alpine:3.10
